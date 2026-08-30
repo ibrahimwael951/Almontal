@@ -3,6 +3,9 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/theme-provider";
+import Navbar from "@/components/Navbar";
+import GradualBlur from "@/components/ui/GradualBlur";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -36,14 +39,27 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         inter.variable,
       )}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="relative min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <Navbar />
+          <ScrollArea dir="rtl" className="h-screen w-full">
+            {children}
+          </ScrollArea>
+          <GradualBlur
+            target="parent"
+            position="bottom"
+            height="7rem"
+            strength={2}
+            divCount={5}
+            curve="bezier"
+            exponential
+            opacity={1}
+          />
         </ThemeProvider>
       </body>
     </html>
