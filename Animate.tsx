@@ -2,6 +2,18 @@ const blur = "blur(5px)";
 const distance = 60;
 const duration = 0.3;
 
+export const ViewPort = {
+  viewport: { once: true, amount: 0.5 },
+  whileInView: {
+    y: 0,
+    x: 0,
+    scale: 1,
+    opacity: 1,
+    filter: "blur(0px)",
+    transition: { duration },
+  },
+};
+
 export const Animate = {
   animate: {
     y: 0,

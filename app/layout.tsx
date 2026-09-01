@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/theme-provider";
 import Navbar from "@/components/Navbar";
-import GradualBlur from "@/components/ui/GradualBlur";
+import { Amiri, Noto_Nastaliq_Urdu } from "next/font/google";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import GradualBlurMemo from "@/components/ui/GradualBlur";
+import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const amiri = Amiri({
+  subsets: ["arabic"],
+  variable: "--font-amiri",
+  weight: ["400", "700"],
 });
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const nastaliq = Noto_Nastaliq_Urdu({
+  subsets: ["arabic"],
+  variable: "--font-nastaliq",
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -33,13 +33,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn(
         "h-full",
         "antialiased",
-        geistSans.variable,
-        geistMono.variable,
+        amiri.variable,
+        nastaliq.variable,
         "font-sans",
-        inter.variable,
       )}
     >
-      <body className="relative min-h-screen">
+      <body dir="rtl" className="relative min-h-screen">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -47,10 +46,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           <Navbar />
-          <ScrollArea dir="rtl" className="h-screen w-full">
+          <ScrollArea className="h-screen w-full">
             {children}
+            <Footer />
           </ScrollArea>
-          <GradualBlur
+          <GradualBlurMemo
             target="parent"
             position="bottom"
             height="7rem"

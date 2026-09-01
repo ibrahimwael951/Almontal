@@ -1,12 +1,17 @@
-import Hero from "@/components/Hero";
+import About from "@/components/Home/About";
+import HaveAPlan from "@/components/Home/HaveAPlan";
+import Hero from "@/components/Home/Hero";
+import OldKitchen from "@/components/Home/OldKitchen";
+import SimpleKitchen from "@/components/Home/SimpleKitchen";
 
 export default function Page() {
   return (
-    <main
-      dir="rtl"
-      className="w-full max-w-7xl min-h-screen mx-auto pt-20 md:pt-0 px-5 md:px-10"
-    >
+    <main dir="rtl" className="w-full min-h-screen ">
       <Hero />
+      <About />
+      <OldKitchen />
+      <SimpleKitchen />
+      <HaveAPlan />
     </main>
   );
 }
