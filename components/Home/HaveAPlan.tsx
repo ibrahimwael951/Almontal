@@ -10,7 +10,7 @@ const HaveAPlan = () => {
     <motion.section
       {...opacityWithBlur}
       {...ViewPort}
-      className="relative max-w-7xl h-fit mx-auto flex justify-between items-center gap-5 my-20 py-20 px-5 md:px-15 rounded-2xl overflow-hidden"
+      className="relative max-w-90 md:max-w-7xl h-fit mx-auto flex flex-col md:flex-row justify-center md:justify-between items-center gap-10 md:gap-5 my-20 py-20 px-5 md:px-15 rounded-2xl overflow-hidden"
     >
       <div className="absolute top-0 left-0 h-full w-full -z-10">
         <Silk
@@ -23,16 +23,18 @@ const HaveAPlan = () => {
       </div>
       <h1 className="font-amiri text-5xl font-bold text-center text-white flex flex-col items-start gap-5">
         <BlurText
-          text=" عندك فكره؟ و عاوز تنفذها ؟!"
+          text=" عندك فكره و عاوز تنفذها ؟!"
           delay={50}
           animateBy="words"
           direction="top"
+          className="justify-center"
         />
         <BlurText
           text="خلينا نحولها لواقع.... "
           delay={50}
           animateBy="words"
           direction="top"
+          className="justify-center"
         />
       </h1>
 
@@ -47,6 +49,7 @@ const HaveAPlan = () => {
           size={"lg"}
           variant={"secondary"}
           className="w-full text-2xl h-16 px-5"
+          link="/contact"
         >
           تواصل معانا
         </Button>

@@ -8,7 +8,7 @@ import BlurText from "../ui/BlurText";
 const SimpleKitchen = () => {
   return (
     <section className="md:h-screen min-h-screen w-full flex flex-col md:flex-row justify-between items-center gap-y-5 pt-24 mt-20 md:pt-0 md:pr-10 bg-primary overflow-hidden">
-      <div className="flex flex-col justify-center items-start gap-5 w-full md:w-2/4 text-right">
+      <div className="flex flex-col justify-center items-start gap-5 w-full md:w-2/4 text-right px-5">
         <BlurText
           text="مطبخ سيمبل عصري"
           delay={200}
@@ -31,8 +31,8 @@ const SimpleKitchen = () => {
           transition={{ delay: 2, duration: Animate.transition.duration }}
           className="flex gap-4 mt-2"
         >
-          <Button size="lg" variant={"secondary"} link="/kitchen">
-            تصفح المطبخ
+          <Button size="lg" link="/products">
+            تصفح منتجاتنا
           </Button>
         </motion.div>
       </div>

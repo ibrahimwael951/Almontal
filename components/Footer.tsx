@@ -3,11 +3,12 @@
 import Link from "next/link";
 import { motion } from "motion/react";
 import { Animate, opacity } from "@/Animate";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/about", label: "من نحن؟" },
   { href: "/contact", label: "تواصل معنا" },
-  { href: "/kitchen", label: "المطبخ" },
+  { href: "/products", label: "منتجاتنا" },
 ];
 
 const socialLinks = [
@@ -51,6 +52,15 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const Footer = () => {
+  const pathName = usePathname();
+
+  if (
+    pathName == "/contact" ||
+    pathName == "/dashboard" ||
+    pathName == "/admin" ||
+    pathName.slice(0, 6) == "/admin"
+  )
+    return;
   return (
     <motion.footer
       {...opacity}

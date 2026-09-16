@@ -58,14 +58,13 @@ function Button({
 
   if (link)
     return (
-      <Link href={link} className={className}>
-        <Comp
-          data-slot="button"
-          data-variant={variant}
-          data-size={size}
-          className={cn(buttonVariants({ variant, size }))}
-          {...props}
-        />
+      <Link
+        href={link}
+        data-size={size}
+        data-variant={variant}
+        className={cn(buttonVariants({ className, variant, size }))}
+      >
+        <Comp data-slot="button" {...props} />
       </Link>
     );
   return (

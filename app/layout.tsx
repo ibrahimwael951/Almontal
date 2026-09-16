@@ -6,6 +6,8 @@ import { Amiri, Noto_Nastaliq_Urdu } from "next/font/google";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import GradualBlurMemo from "@/components/ui/GradualBlur";
 import Footer from "@/components/Footer";
+import { AuthProvider } from "@/context/AuthProvider";
+import { Toaster } from "@/components/ui/sonner";
 
 const amiri = Amiri({
   subsets: ["arabic"],
@@ -37,12 +39,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         "font-sans",
       )}
     >
-      <body dir="rtl" className="relative min-h-screen">
-        <Navbar />
-        <ScrollArea className="h-screen w-full">
-          {children}
-          <Footer />
-        </ScrollArea>
+      <body className="relative min-h-screen">
+        <AuthProvider>
+          <Navbar />
+          <ScrollArea dir="rtl" className="h-screen w-full">
+            {children}
+            <Toaster />
+            <Footer />
+          </ScrollArea>
+        </AuthProvider>
         <GradualBlurMemo
           target="parent"
           position="bottom"
