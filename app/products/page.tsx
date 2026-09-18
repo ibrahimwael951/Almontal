@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, Suspense } from "react";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { Search } from "lucide-react";
@@ -222,7 +222,7 @@ function ToggleRow({
 
 // ---------- Main page ----------
 
-export default function Page() {
+export function ProductsContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -527,5 +527,18 @@ export default function Page() {
         </motion.aside>
       </div>
     </main>
+  );
+}
+export default function Page() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen w-full items-center justify-center">
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-muted-foreground/20 border-t-foreground" />
+        </main>
+      }
+    >
+      <ProductsContent />
+    </Suspense>
   );
 }
